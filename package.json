@@ -14,7 +14,8 @@
     "lint": "lerna run lint",
     "format": "lerna run format",
     "preview": "lerna run preview",
-    "preview:server": "lerna run preview --scope=server"
+    "preview:server": "lerna run preview --scope=server",
+		"start": "docker-compose up --build"
   },
   "license": "MIT",
   "workspaces": [
