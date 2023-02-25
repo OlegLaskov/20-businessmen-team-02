@@ -15,7 +15,7 @@
     "format": "lerna run format",
     "preview": "lerna run preview",
     "preview:server": "lerna run preview --scope=server",
-		"start": "yarn preview --scope client && yarn preview --scope server"
+		"start": "yarn lerna run preview"
   },
   "license": "MIT",
   "workspaces": [
