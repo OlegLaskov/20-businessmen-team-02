@@ -8,12 +8,16 @@ WORKDIR /app
 FROM base as builder
 
 COPY package.json yarn.lock
-RUN yarn install --frozen-lockfile
+RUN yarn install --frozen-lockfile && apt install -y netcat
 
 COPY . .
 
 RUN yarn bootstrap
 RUN rm -rf /app/packages/server/dist/ && yarn build
+# Копируем wait-for
+COPY utils/wait-for.sh wait-for.sh
+# даём ему прав на запуск
+RUN chmod +x wait-for.sh
 
 EXPOSE $SERVER_PORT
 CMD [ "node", "packages/server/dist/index.js" ]
